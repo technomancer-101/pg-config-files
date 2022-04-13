@@ -1,0 +1,15 @@
+---
+- name: Setup SSH and Samba for AD use
+  hosts: localhost
+  become: true
+  
+  tasks:
+  - name: install samba packages for AD integration
+    apt: name={{item}}
+	with_items:
+      - winbind
+      - libnss-winbind
+      - libpam-winbind
+      - libpam-krb5
+      - samba
+      - cifs-utils
